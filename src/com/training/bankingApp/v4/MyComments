@@ -1,0 +1,29 @@
+Redistributing Responsibility:
+
+
+In V3, there is something unsatisfactory about the design of their methods. In particular, 
+the BankAccount methods don’t do anything interesting.All the work occurs in Bank.
+
+the version 3 banking demo was for the Bank class to manage the map of accounts and for the BankAccount class to manage each individual account. 
+However, that didn’t occur—the Bank class is also performing activities related to bank accounts.This is solved in V4
+
+Dependency Injection:
+The Most Qualified Class rule can also be applied to the question of how to initialize the dependencies of a class.
+ For example consider the BankClient class, which has dependencies on Scanner and Bank.
+ 
+When the class creates its Scanner object it uses System.in as the source, indicating that input should come from the console. But why choose System.in? 
+There are other options. The class could read its input from a file instead of the console or it could get its input from somewhere over the Internet.
+
+A similar argument could be made for the bank variable. Suppose that the program gets modified so that it can access multiple banks. 
+The BankClient code does not care which bank it accesses, so how does it decide which bank to use?
+
+
+Mediation( The Rule of Low Coupling --> Try to minimize the number of class dependencies.)
+The BankClient class in the version 4 banking demo does not know about BankAccount objects . It interacts with accounts solely through methods of the Bank class.
+
+ The Bank class is called a mediator .
+ 
+ Another advantage to mediation is that the mediator can keep track of activity on the mediated objects. In the banking demo
+ The Bank class can also use mediation to track the activity of specific accounts. For example, the bank could track deposits into foreign accounts 
+
+

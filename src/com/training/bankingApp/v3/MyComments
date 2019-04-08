@@ -1,0 +1,15 @@
+ Suppose now that the bank also wants to  store additional information for each account. 
+ In particular, assume that the bank wants to know whether the owner of each account is foreign or domestic. 
+ How should the program change?
+ 
+ To solve this, bank’s map can then associate a BankAccount object with each account number.
+ 
+Encapsulation Rule: A class’s implementation details should be hidden from its clients 
+as much as possible.
+ 
+using methods are able to limit the power of clients. A public variable is equivalent to both an accessor and a mutator method, 
+and having both methods can often be inappropriate. For example, clients of the alternative.
+BankAccount class would have the power to change the account number, which is not a good idea.
+ 
+ 
+The classes of the version 3 banking demo are modular and encapsulated now

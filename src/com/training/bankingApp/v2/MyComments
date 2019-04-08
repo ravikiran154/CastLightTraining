@@ -1,0 +1,28 @@
+ The Single Responsibility Rule 
+ 
+A class should have a single purpose, and all its methods should be related to that purpose.
+
+
+1)Note that the program V1 has multiple areas of responsibility—for example, one responsibility is to handle I/O processing and
+another responsibility is to manage account information—and both responsibilities are handled by a single class.(Violates Single Responsibility
+principle)
+
+In V2 the class Bank is responsible for the banking information; the class BankClient is responsible for I/O processing; and the 
+class BankProgram is responsible for putting everything together
+
+Similarly, the deposit method is not responsible for asking the user for the deposit amount. Instead, it expects the caller of the method (i.e., BankClient) to pass the amount as an argument.
+
+The authorizeLoan method eliminates both input and output code from the corresponding version 1 method. 
+It expects the loan amount to be passed in as an argument and it returns the decision as a boolean.
+
+The getBalance method corresponds to the select method of version 1. That method is primarily concerned with choosing a current account, 
+which is the responsibility of BankClient. Its only bank-specific code involves obtaining the balance of the selected account. 
+The Bank class therefore has a getBalance method for select to call.
+
+The showAll method in version 1 prints the information of each account. The bank-specific portion of this method is 
+to collect this information into a string, which is the responsibility of Bank’s toString method.
+
+The addInterest method in version 1 has no input/output component whatsoever. Consequently, it is identical to the corresponding method in Bank.
+
+Note that version 2 of the banking demo is more easily modifiable than version 1. It is now possible to change the implementation of Bank without worrying about breaking the code for BankClient. 
+Similarly, it is also possible to change the way that BankClient does its input/output, without affecting Bank or BankProgram
