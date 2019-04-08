@@ -53,7 +53,8 @@ public class BankClient {
 
 	private void newAccount() {
 		boolean isforeign = requestForeign();
-		current = bank.newAccount(isforeign);
+		int type = accountType();
+		current = bank.newAccount(isforeign,type);
 		System.out.println("Your new account number is " + current);
 	}
 
@@ -95,6 +96,12 @@ public class BankClient {
 		System.out.print("Enter 1 for foreign, 2 for domestic: ");
 		int val = scanner.nextInt();
 		return (val == 1);
+	}
+	
+	private int accountType() {
+		System.out.print("Enter 1 for savings, 2 for checkings: ");
+		int val = scanner.nextInt();
+		return val;
 	}
 
 }

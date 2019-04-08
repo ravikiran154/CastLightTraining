@@ -6,9 +6,11 @@ public class BankAccount {
 	private double rate = 0.01;
 	private int balance = 0;
 	private boolean isforeign = false;
+	private int type;
 
-	public BankAccount(int a) {
-		acctnum = a;
+	public BankAccount(int acctnum, int type) {
+		this.acctnum = acctnum;
+		this.type = type;
 	}
 
 	public int getAcctNum() {
@@ -35,15 +37,21 @@ public class BankAccount {
 		balance += amt;
 	}
 
-	public boolean hasEnoughCollateral(int amt) {
-		return balance >= amt / 2;
+	public boolean hasEnoughCollateral(int loanamt) {
+		if (type == 1)
+			return balance >= loanamt / 2;
+		else
+			return balance >= 2 * loanamt / 3;
 	}
 
 	public void addInterest() {
-		balance += (int) (balance * rate);
-	}
-	
+	      if (type == 1)
+	         balance += (int)(balance * rate);
+	   }
+
 	public String toString() {
-		return "Bank account " + acctnum + ": balance=" + balance + ", is " + (isforeign ? "foreign" : "domestic");
+		String typename = (type == 1) ? "Savings" : "Checking";
+		return typename + " Account " + acctnum + ": balance=" + balance + ", is "
+				+ (isforeign ? "foreign" : "domestic");
 	}
 }

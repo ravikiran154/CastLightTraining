@@ -12,9 +12,9 @@ public class Bank {
 		nextacct = n;
 	}
 
-	public int newAccount(boolean isforeign) {
+	public int newAccount(boolean isforeign, int type) {
 		int acctnum = nextacct++;
-		BankAccount ba = new BankAccount(acctnum);
+		BankAccount ba = new BankAccount(acctnum,type);
 		ba.setForeign(isforeign);
 		accounts.put(acctnum, ba);
 		return acctnum;
